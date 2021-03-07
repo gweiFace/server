@@ -16,6 +16,15 @@ app.get("/token/:tokenId", (req, res) => {
 	return res.status(400).send({ success: false });
 });
 
+app.get("/contract", (req, res) => {
+	return res.status(200).send({
+		description: "",
+		external_link: "https://www.gweiface.com/",
+		image: "https://storage.googleapis.com/gwei-faces/logo.png",
+		name: "gweiFaces",
+	});
+});
+
 const listener = app.listen(process.env.PORT || 5000, () => {
 	console.log("Running on port " + listener.address().port);
 });
