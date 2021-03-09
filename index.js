@@ -8,6 +8,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const aggregate = require("./aggregate.json");
+const listAggreg = Object.entries(aggregate);
 
 app.get("/token/:tokenId", (req, res) => {
 	if (aggregate[req.params.tokenId]) {
@@ -24,6 +25,20 @@ app.get("/contract", (req, res) => {
 		image: "https://storage.googleapis.com/gwei-faces/logo.png",
 		name: "gweiFaces",
 	});
+});
+
+app.get("/query", async (req, res) => {
+	const pos = ["face", "hair", "shirt", "accessory", "background"];
+	var filtered = listAggreg;
+	for (attrib in req.query) {
+		filtered = filtered.filter(
+			(el) =>
+				el[1].attributes[pos.indexOf(attrib)].value ===
+				req.query[attrib]
+		);
+	}
+
+	return res.status(200).send(filtered);
 });
 
 const listener = app.listen(process.env.PORT || 5000, () => {
