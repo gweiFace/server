@@ -30,12 +30,14 @@ app.get("/contract", (req, res) => {
 app.get("/query", async (req, res) => {
 	const pos = ["face", "hair", "shirt", "accessory", "background"];
 	var filtered = listAggreg;
-	for (attrib in req.query) {
-		filtered = filtered.filter(
-			(el) =>
-				el[1].attributes[pos.indexOf(attrib)].value ===
-				req.query[attrib]
-		);
+	for (const attrib in req.query) {
+		if (req.query[attrib]) {
+			filtered = filtered.filter(
+				(el) =>
+					el[1].attributes[pos.indexOf(attrib)].value ===
+					req.query[attrib]
+			);
+		}
 	}
 
 	return res.status(200).send(filtered);
