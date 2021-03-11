@@ -31,7 +31,7 @@ app.get("/query", async (req, res) => {
 	const pos = ["face", "hair", "shirt", "accessory", "background"];
 	var filtered = listAggreg;
 	for (const attrib in req.query) {
-		if (req.query[attrib]) {
+		if (req.query[attrib] || req.query[attrib] !== "None") {
 			filtered = filtered.filter(
 				(el) =>
 					el[1].attributes[pos.indexOf(attrib)].value ===
