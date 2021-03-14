@@ -24,6 +24,19 @@ app.get("/factory/:factoryId", (req, res) => {
 			description: "Grants 1 unique gweiFace at random on purchase",
 			image: "https://storage.googleapis.com/gwei-faces/mystery.png",
 		});
+	} else if (req.params.factoryId === "1") {
+		return res.status(200).send({
+			name: "Multiple Mystery gweiFace",
+			description: "Grants many unique gweiFaces at random on purchase",
+			image: "https://storage.googleapis.com/gwei-faces/mystery.png",
+		});
+	} else if (req.params.factoryId === "2") {
+		return res.status(200).send({
+			name: "Mystery gweiFace Lootbox",
+			description:
+				"Grants 1 unique gweiFace Lootbox at random on purchase",
+			image: "https://storage.googleapis.com/gwei-faces/mystery.png",
+		});
 	}
 	return res.status(400).send({ success: false });
 });
