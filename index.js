@@ -46,8 +46,13 @@ app.get("/contract", (req, res) => {
 		description:
 			"gweiFace is a collection of 9,999 unique pieces of NFT art. gweiFaces are created through a random, unique combination of five characteristics: face, hair, shirt, accessory, and background. The rarities of these five characteristics vary, so look out for the rare gweiFaces! You can learn more about the project on our website (gweiface.com) and you can stay up to date on our project by following our twitter or joining our discord.",
 		external_link: "https://www.gweiface.com/",
+		discord_link: "https://www.gppgle.com",
+		twitter_userName: "gweiFaceNFT",
+		banner_image: "https://storage.googleapis.com/gwei-faces/banner.png",
 		image: "https://storage.googleapis.com/gwei-faces/logo.png",
 		name: "gweiFace",
+		seller_fee_basis_points: 500, // 5%
+		fee_recipient: "0xbA842b7DA417Ba762D75e8F99e11c2980a8F8051",
 	});
 });
 
@@ -55,7 +60,6 @@ app.get("/query", async (req, res) => {
 	const pos = ["face", "hair", "shirt", "accessory", "background"];
 	var filtered = listAggreg;
 	for (const attrib in req.query) {
-		console.log(req.query[attrib]);
 		if (req.query[attrib] && req.query[attrib] != "") {
 			filtered = filtered.filter(
 				(el) =>
