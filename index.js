@@ -55,7 +55,7 @@ app.get("/contract", (req, res) => {
 		banner_link: "https://storage.googleapis.com/gwei-faces/banner.png",
 		image: "https://storage.googleapis.com/gwei-faces/logo.png",
 		name: "gweiFace",
-		seller_fee_basis_points: 500, // 5%
+		seller_fee_basis_points: 250, // 2.5%
 		fee_recipient: "0xbA842b7DA417Ba762D75e8F99e11c2980a8F8051",
 	});
 });
